@@ -44,9 +44,9 @@ class PermissionFragment : Fragment() {
             val rationalePermissions: MutableList<String> = mutableListOf()
             val deniedPermissions: MutableList<String> = mutableListOf()
             if (requestCode == REQUEST_CODE) {
-                grantResults.forEach { result ->
-                    val index = grantResults.indexOf(result)
+                for (index in permissions.indices) {
                     val permission = permissions[index]
+                    val result = grantResults[index]
                     if (result != PackageManager.PERMISSION_GRANTED) {
                         if (shouldShowRequestPermissionRationale(permission)) {
                             rationalePermissions.add(permission)
